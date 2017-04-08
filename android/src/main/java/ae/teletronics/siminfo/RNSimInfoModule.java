@@ -14,7 +14,7 @@ public class RNSimInfoModule extends ReactContextBaseJavaModule {
 
     ReactApplicationContext reactContext;
 
-    public RNDeviceModule(ReactApplicationContext reactContext) {
+    public RNSimInfoModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
     }
@@ -30,7 +30,7 @@ public class RNSimInfoModule extends ReactContextBaseJavaModule {
     Map<String, Object> getConstants() {
 
         HashMap<String, Object> constants = new HashMap<String, Object>();
-
+/*
         PackageManager packageManager = this.reactContext.getPackageManager();
         String packageName = this.reactContext.getPackageName();
 
@@ -88,9 +88,7 @@ public class RNSimInfoModule extends ReactContextBaseJavaModule {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+*/
         return constants;
     }
-}
-    
 }
