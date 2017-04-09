@@ -1,13 +1,25 @@
 {
   "name": "react-native-siminfo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A module to allow access to sim card information",
-  "repository": "https://github.com/TeletronicsDotAe/react-native-siminfo",
+  "main": "sim.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeletronicsDotAe/react-native-siminfo.git"
+  },
   "keywords": [
     "android",
     "sim"
   ],
-  "author": "Tommy Dejbjerg Pedersen",
-  "license": "MIT",
-  "dependencies": {}
+  "author": "Teletronics.ae",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TeletronicsDotAe/react-native-siminfo/issues"
+  },
+  "homepage": "https://github.com/TeletronicsDotAe/react-native-siminfo#readme"
 }

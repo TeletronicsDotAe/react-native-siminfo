@@ -4,6 +4,17 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
+import java.util.List;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.Manifest;
+
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -30,22 +41,24 @@ public class RNSimInfoModule extends ReactContextBaseJavaModule {
     Map<String, Object> getConstants() {
 
         HashMap<String, Object> constants = new HashMap<String, Object>();
-/*
+
         PackageManager packageManager = this.reactContext.getPackageManager();
         String packageName = this.reactContext.getPackageName();
 
-        TelephonyManager telManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
+        TelephonyManager telManager = (TelephonyManager) this.reactContext.getSystemService(Context.TELEPHONY_SERVICE);
+
+    
         int phoneCount = 0;
         int activeSubscriptionInfoCount = 0;
         int activeSubscriptionInfoCountMax = 0;
 
         try {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                phoneCount = manager.getPhoneCount();
-
-                if (simPermissionGranted(Manifest.permission.READ_PHONE_STATE)) {
-                    SubscriptionManager manager = (SubscriptionManager) cntx.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+                phoneCount = telManager.getPhoneCount();
+                String phoneNumber = telManager.getLine1Number();
+               
+                    SubscriptionManager manager = (SubscriptionManager) this.reactContext.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
                     activeSubscriptionInfoCount = manager.getActiveSubscriptionInfoCount();
                     activeSubscriptionInfoCountMax = manager.getActiveSubscriptionInfoCountMax();
 
@@ -63,7 +76,7 @@ public class RNSimInfoModule extends ReactContextBaseJavaModule {
                         String number = subInfo.getNumber();
                         int simSlotIndex = subInfo.getSimSlotIndex();
                         int subscriptionId = subInfo.getSubscriptionId();
-                        boolean networkRoaming = telManager.isNetworkRoaming(simSlotIndex);
+                        boolean networkRoaming = false; //telManager.isNetworkRoaming(simSlotIndex);
                         String deviceId = telManager.getDeviceId(simSlotIndex);
 
                         constants.put("carrierName" + sub, carrierName.toString());
@@ -78,17 +91,11 @@ public class RNSimInfoModule extends ReactContextBaseJavaModule {
                         constants.put("deviceId" + sub, deviceId);
                         constants.put("simSerialNumber" + sub, iccId);
                         constants.put("subscriptionId" + sub, subscriptionId);
-
-                        sims.put(simData);
                     }
-                }
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
-*/
         return constants;
     }
 }
